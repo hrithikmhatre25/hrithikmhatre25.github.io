@@ -1,0 +1,400 @@
+/* ===========================================
+   Our Little Sunset World — Styles
+   Minimalist, all-pink theme
+   =========================================== */
+
+:root {
+  --pink-50:  #fff5f8;
+  --pink-100: #ffe8ef;
+  --pink-200: #ffd3e0;
+  --pink-300: #ffb6cf;
+  --pink-400: #ff8fb3;
+  --pink-500: #f76e9a;
+  --pink-deep: #e85a8a;
+
+  --text-dark: #5c3a4a;
+  --text-soft: #a87a8e;
+  --white: #ffffff;
+
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--pink-50);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ===========================
+   Falling flowers + cat/dog emojis
+   =========================== */
+.falling-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.falling-item {
+  position: absolute;
+  top: -10vh;
+  font-size: 1.4rem;
+  opacity: 0.5;
+  animation: fall linear infinite;
+  will-change: transform;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(55vh) translateX(24px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(-16px) rotate(360deg);
+  }
+}
+
+/* ===========================
+   Hero
+   =========================== */
+.hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, var(--pink-200) 0%, var(--pink-100) 100%);
+  overflow: hidden;
+  padding: 70px 20px;
+  z-index: 1;
+}
+
+.sun {
+  position: absolute;
+  bottom: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, var(--pink-300) 60%, var(--pink-200) 100%);
+  opacity: 0.6;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  color: var(--pink-deep);
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.hero-critters {
+  position: relative;
+  z-index: 2;
+  margin-top: 26px;
+}
+
+.critter {
+  font-size: 2.2rem;
+  display: inline-block;
+  margin: 0 14px;
+  opacity: 0.85;
+  animation: bounce 4s ease-in-out infinite;
+}
+
+.dog { animation-delay: 0.8s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===========================
+   Sections (general)
+   =========================== */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  color: var(--pink-deep);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 36px;
+}
+
+/* ===========================
+   Members
+   =========================== */
+.members-section {
+  background: var(--white);
+}
+
+.members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.member-card {
+  background: var(--pink-50);
+  border-radius: 20px;
+  padding: 20px;
+  width: 200px;
+  border: 1px solid var(--pink-100);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(247, 110, 154, 0.15);
+}
+
+.member-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--pink-200);
+  background: var(--pink-100);
+}
+
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.member-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin-top: 14px;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+/* ===========================
+   Messages (scrollable)
+   =========================== */
+.messages-wrap {
+  margin-top: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  background: var(--pink-50);
+  border-radius: 18px;
+  padding: 22px;
+  text-align: left;
+  position: relative;
+  border: 1px solid var(--pink-100);
+  display: flex;
+  flex-direction: column;
+}
+
+.message-card.message-left { border-left: 3px solid var(--pink-400); }
+.message-card.message-right { border-left: 3px solid var(--pink-500); }
+
+.message-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--pink-deep);
+  margin-bottom: 10px;
+}
+
+.message-scroll {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.message-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.message-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.message-scroll::-webkit-scrollbar-thumb {
+  background: var(--pink-300);
+  border-radius: 6px;
+}
+
+.message-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  white-space: pre-wrap;
+}
+
+/* ===========================
+   Carousel (videos & gallery)
+   =========================== */
+.videos-section {
+  background: var(--pink-50);
+}
+
+.gallery-section {
+  background: var(--white);
+  padding-bottom: 90px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 16px auto 0;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--pink-50);
+  border: 1px solid var(--pink-100);
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-soft);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--pink-400);
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background: var(--pink-100);
+  color: var(--pink-deep);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--pink-400);
+  outline-offset: 2px;
+}
+
+.carousel-counter {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.footer {
+  text-align: center;
+  padding: 26px;
+  background: var(--pink-100);
+  color: var(--pink-deep);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 600px) {
+  .member-card { width: 150px; }
+  .messages-wrap { flex-direction: column; align-items: center; }
+  .carousel { gap: 4px; }
+  .carousel-arrow { font-size: 1.5rem; padding: 6px 8px; }
+}
